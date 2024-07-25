@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&family=Oswald:wght@200;300;400;500&family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+body {
+  background-color: #3fbba4 !important;
+}
+
+
+/* sidebar---------------- */
+
+.Header_nav {
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.10);
+  background-color: #c2e7e0;
+}
+
+.custom-table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 992px) {
+  #Sidebar {
+    padding-top: 50px;
+  }
+}
+
+
+
+@media screen and (max-width: 468px) {}

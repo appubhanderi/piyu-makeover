@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&family=Oswald:wght@200;300;400;500&family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+body {
+    background-color: #ff9fcf !important;
+}
+
+
+/* Header---------------- */
+
+.Header_nav {
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Home Page---------------- */
+
+
+.HomeTitle marquee,
+.HomeService h4,
+.Service,
+.homepages h1,
+.About h5 {
+    font-family: "Dancing Script", cursive;
+}
+
+
+.HomeTitle {
+    background-image: url(./image/header-bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rainbow-text {
+    display: inline-block;
+    animation: rainbow 5s linear infinite;
+}
+
+
+.homeCarousel img {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 50% !important;
+}
+
+.slick-dots li button:before {
+    font-size: 20px !important;
+}
+
+.slick-prev,
+.slick-next {
+    font-size: 20px !important;
+    margin-left: 20px;
+}
+
+.slick-prev,
+.slick-next {
+    margin-right: 30px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 30px !important;
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 10;
+}
+
+/* Footer---------------- */
+
+.footer {
+    background-image: url(./image/footer.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    #box-2 {
+        order: 1;
+    }
+
+    #box-1 {
+        order: 2;
+    }
+
+    #box-4 {
+        order: 1;
+    }
+
+    #box-3 {
+        order: 2;
+    }
+
+}
+
+
+@keyframes rainbow {
+    0% {
+        color: red;
+    }
+
+    14% {
+        color: orange;
+    }
+
+    28% {
+        color: yellow;
+    }
+
+    42% {
+        color: green;
+    }
+
+    57% {
+        color: blue;
+    }
+
+    71% {
+        color: indigo;
+    }
+
+    85% {
+        color: violet;
+    }
+
+    100% {
+        color: red;
+    }
+}
