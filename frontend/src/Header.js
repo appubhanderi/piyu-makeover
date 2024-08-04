@@ -151,7 +151,7 @@ export default function Header() {
                             <Link className='nav-link active' to='/services'>SERVICES</Link>
                             <Link className='nav-link active' to='/gallery'>GALLERY</Link>
                             <Link className='nav-link active' to='/testimonials'>TESTIMONIALS</Link>
-                            <Link className='nav-link active' to='/contect'>CONTACT</Link>
+                            <Link className='nav-link active' to='/contact'>CONTACT</Link>
                         </Nav>
                         <Nav>
                             <Button className='btn btn-danger' style={{ width: 120 }} onClick={handleShow}>

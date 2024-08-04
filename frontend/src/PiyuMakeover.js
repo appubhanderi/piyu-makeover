@@ -70,7 +70,7 @@ export default function PiyuMakeover() {
         <Route path='/services' element={<Services />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/testimonials' element={<Testimonials />} />
-        <Route path='/contect' element={<Contact />} />
+        <Route path='/contact' element={<Contact />} />
 
         <Route path='/facialCleanupHome' element={<FacialCleanupHome />} />
         <Route path='/FacialAllSkin' element={<FacialAllSkin />} />
