@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { Col, Container, Row } from 'react-bootstrap';
 import { FaCloudUploadAlt } from "react-icons/fa";
-import axios from 'axios';
-import AdminHeader from './AdminHeader';
 import firebaseApp from './SetupFirebase';
+import AdminHeader from './AdminHeader';
 import { toast } from 'react-toastify';
 
 export default function UploadImage() {
@@ -16,30 +15,40 @@ export default function UploadImage() {
             image: null,
         },
         onSubmit: (values) => {
-            axios.post('http://localhost:5000/MyWorkImg/post', values)
-                .then((response) => {
-                    console.log(response);
-                    formik.resetForm();
-                    setPreview(null);
-                    toast('Add Successful');
-                })
-                .catch((error) => {
-                    console.error('Error submitting form:', error);
-                    toast('Error uploading image');
-                });
-        },
+            const file = values.image;
+            if (file) {
+                uploadImageToFirebase(file)
+                    .then((dataURL) => {
+                        const db = firebaseApp.firestore();
+                        return db.collection("MyWorkImg").add({
+                            imageUrl: dataURL,
+                            id: Date.now()
+                        });
+                    })
+                    .then(() => {
+                        formik.resetForm();
+                        setPreview(null);
+                        toast('Upload Successful');
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        toast('Failed to upload image. Please try again.');
+                    });
+            }
+        }
     });
 
     const handleFileChange = async (event) => {
         const file = event.currentTarget.files[0];
         if (file) {
-            const dataURL = await convertImageToDataURL(file);
-            formik.setFieldValue("image", dataURL);
+            const dataURL = await uploadImageToFirebase(file);
+            formik.setFieldValue("image", file);
             setPreview(dataURL);
         }
     };
 
-    const convertImageToDataURL = (file) => {
+
+    const uploadImageToFirebase = (file) => {
         return new Promise((resolve, reject) => {
             const metadata = {
                 contentType: file.type,
@@ -47,10 +56,11 @@ export default function UploadImage() {
 
             const uploadTask = storageRef.child(`images/${file.name}`).put(file, metadata);
 
-            uploadTask.on('state_changed',
+            uploadTask.on(
+                'state_changed',
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
+                    console.log(progress);
                 },
                 (error) => {
                     console.error('Upload error:', error);
@@ -59,7 +69,7 @@ export default function UploadImage() {
                 () => {
                     uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
                         console.log('File available at', downloadURL);
-                        resolve(downloadURL); // Resolve the promise with the download URL
+                        resolve(downloadURL);
                     });
                 }
             );

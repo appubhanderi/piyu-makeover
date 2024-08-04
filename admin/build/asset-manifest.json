@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bc9479c8.css",
+    "main.js": "/static/js/main.b61b6849.js",
+    "static/js/453.1c13788b.chunk.js": "/static/js/453.1c13788b.chunk.js",
+    "static/media/Piyu(3).png": "/static/media/Piyu(3).470a7dc8c8786de7f2fb.png",
+    "index.html": "/index.html",
+    "main.bc9479c8.css.map": "/static/css/main.bc9479c8.css.map",
+    "main.b61b6849.js.map": "/static/js/main.b61b6849.js.map",
+    "453.1c13788b.chunk.js.map": "/static/js/453.1c13788b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc9479c8.css",
+    "static/js/main.b61b6849.js"
+  ]
+}

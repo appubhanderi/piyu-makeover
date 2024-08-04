@@ -6,7 +6,7 @@ import About from './About'
 import Services from './Services'
 import Gallery from './Gallery'
 import Testimonials from './Testimonials'
-import Contect from './Contect'
+import Contact from './Contact'
 
 import FacialCleanupHome from './FacialCleanupHome'
 import FacialAllSkin from './FacialAllSkin'
@@ -70,7 +70,7 @@ export default function PiyuMakeover() {
         <Route path='/services' element={<Services />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/testimonials' element={<Testimonials />} />
-        <Route path='/contect' element={<Contect />} />
+        <Route path='/contect' element={<Contact />} />
 
         <Route path='/facialCleanupHome' element={<FacialCleanupHome />} />
         <Route path='/FacialAllSkin' element={<FacialAllSkin />} />

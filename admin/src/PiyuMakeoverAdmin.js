@@ -5,6 +5,7 @@ import AdminHome from './AdminHome'
 import BookingSlot from './BookingSlot'
 import UploadImage from './UploadImage'
 import Gallery from './Gallery'
+import PaymentPage from './PaymentPage '
 
 export default function PiyuMakeoverAdmin() {
     return (
@@ -15,6 +16,7 @@ export default function PiyuMakeoverAdmin() {
                 <Route path='/BookingSlot' element={<BookingSlot />} />
                 <Route path='/UploadImage' element={<UploadImage />} />
                 <Route path='/Gallery' element={<Gallery />} />
+                <Route path='/PaymentPage' element={<PaymentPage />} />
             </Routes>
         </BrowserRouter>
     )

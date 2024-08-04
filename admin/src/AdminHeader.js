@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Image, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from './image/Piyu(3).png';
-import { isMobile } from 'react-device-detect';
 import {
     Sidebar,
     Menu,
@@ -25,19 +24,6 @@ export default function AdminHeader() {
         toast('Logout Succsessfuly')
     };
 
-    const handleCollapsedChange = () => {
-        if (collapsed) {
-            if (!isMobile) {
-                document.getElementById('page-container').setAttribute('class', 'BigScreen');
-            }
-        } else {
-            if (!isMobile) {
-                document.getElementById('page-container').setAttribute('class', 'SmallScreen');
-            }
-        }
-        setCollapsed(!collapsed);
-    };
-
     return (
         <>
             <Navbar collapseOnSelect expand="lg" className="Header_nav fixed-top mb-5">
@@ -45,7 +31,7 @@ export default function AdminHeader() {
             </Navbar>
 
             <Sidebar
-                backgroundColor="#fff"
+                backgroundColor="#c2e7e0"
                 id='Sidebar'
                 className={`app ${toggled ? "toggled" : ""}`}
                 style={{ height: "100%", position: "fixed", zIndex: 100, boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.2)" }}
@@ -61,6 +47,7 @@ export default function AdminHeader() {
                     <MenuItem icon={<FaCloudUploadAlt />} component={<Link to="/UploadImage" />}>Upload Image</MenuItem>
                     <MenuItem icon={<FaTableList />} component={<Link to="/AdminHome" />}>Booking Slot</MenuItem>
                     <MenuItem icon={<RiGalleryFill />} component={<Link to="/Gallery" />}>Gallery</MenuItem>
+                    <MenuItem icon={<RiGalleryFill />} component={<Link to="/PaymentPage " />}>PaymentPage </MenuItem>
                 </Menu>
                 <div className="sidebar-footer">
                     <Menu iconShape="square">

@@ -1,25 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Table, Container, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
-import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import firebaseApp from './SetupFirebase';
 
 export default function BookingSlot() {
     const [bookedDates, setBookedDates] = useState([]);
+
     useEffect(() => {
         fetchBookedDates();
     }, []);
 
-    const fetchBookedDates = async () => {
-        axios.get('http://localhost:5000/PiyuMakeoverUser/getBooking')
-            .then((response) => {
-                setBookedDates(response.data);
+    const fetchBookedDates = () => {
+        const db = firebaseApp.firestore();
+        db.collection("bookings").get()
+            .then((querySnapshot) => {
+                const bookings = querySnapshot.docs.map(doc => doc.data());
+                setBookedDates(bookings);
             })
             .catch((error) => {
                 console.error('Error fetching booked dates:', error);
+                toast('Error fetching booked dates. Please try again.');
             });
     };
-    return (
 
+    return (
         <Container className='pt-2 mt-5'>
             <Row className='justify-content-end' >
                 <Col md={10} >
@@ -35,20 +41,23 @@ export default function BookingSlot() {
                             </tr>
                         </thead>
                         <tbody>
-                            {bookedDates.map((row, index) => (
-                                <tr key={index}>
-                                    <td>{row.name}</td>
-                                    <td>{row.contact}</td>
-                                    <td>{row.service}</td>
-                                    <td>{moment(row.date).format('LL')}</td>
-                                    <td>{row.bookingSlot}</td>
-                                </tr>
-                            ))}
+                            {bookedDates.map((row, index) => {
+                                // Check if the date is a timestamp and convert it
+                                const date = row.date.seconds ? new Date(row.date.seconds * 1000) : new Date(row.date);
+                                return (
+                                    <tr key={index}>
+                                        <td>{row.name}</td>
+                                        <td>{row.contact}</td>
+                                        <td>{row.service}</td>
+                                        <td>{moment(date).format('LL')}</td>
+                                        <td>{row.bookingSlot}</td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </Table>
                 </Col>
             </Row>
         </Container>
-
-    )
+    );
 }

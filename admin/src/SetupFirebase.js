@@ -11,13 +11,13 @@ SetupFirebase();
 */
 function SetupFirebase() {
     const firebaseConfig = {
-        apiKey: "AIzaSyC-kscwOlMj79VLnH8jcgJ7W9g8yI-UOIw",
-        authDomain: "piyu-makeover.firebaseapp.com",
-        projectId: "piyu-makeover",
-        storageBucket: "piyu-makeover.appspot.com",
-        messagingSenderId: "1016275440424",
-        appId: "1:1016275440424:web:bead82adf2c4435165f61d",
-        measurementId: "G-MTDY1JHN1F"
+        apiKey: "AIzaSyBcpKH0pbNeK71S9vNx1IlYH2dF5Xi01PA",
+        authDomain: "piyumakeover-admin-9ae72.firebaseapp.com",
+        projectId: "piyumakeover-admin-9ae72",
+        storageBucket: "piyumakeover-admin-9ae72.appspot.com",
+        messagingSenderId: "790271963436",
+        appId: "1:790271963436:web:5f1258990641d402c73c89",
+        measurementId: "G-Z2CEE2Y692"
     };
     // Initialize Firebase
     firebaseApp = firebase.initializeApp(firebaseConfig);

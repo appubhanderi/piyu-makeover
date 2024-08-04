@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Col, Container, Row } from 'react-bootstrap';
 import { IoMdSearch } from "react-icons/io";
 import Modal from 'react-bootstrap/Modal';
 import Layout from './Layout';
 import HomeTitle from './HomeTitle';
+import firebaseApp from './Firebase';
+import { toast } from 'react-toastify';
+
+const firestore = firebaseApp.firestore();
 
 export default function Gallery() {
     const [showModal, setShowModal] = useState(false);
@@ -15,14 +18,16 @@ export default function Gallery() {
         fetchMyWorkImg();
     }, []);
 
-    const fetchMyWorkImg = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/MyWorkImg/get');
-            setMyWorkImg(response.data);
-        } catch (error) {
-            console.error('Error fetching images:', error);
-            alert('Error fetching images: ' + error.message);
-        }
+    const fetchMyWorkImg = () => {
+        firestore.collection("MyWorkImg").get()
+            .then((snapshot) => {
+                const images = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setMyWorkImg(images);
+            })
+            .catch((error) => {
+                console.error('Error fetching images:', error);
+                toast.error('Error fetching images: ' + error.message);
+            });
     };
 
     const handleImageClick = (image) => {
@@ -43,7 +48,7 @@ export default function Gallery() {
                             <div className=' icon'>
                                 <img
                                     width={'100%'}
-                                    src={row.image}
+                                    src={row.imageUrl}
                                     className='img-fluid image'
                                     style={{ overflow: 'hidden' }}
                                     alt={`Hair Style ${row._id}`}
@@ -52,7 +57,7 @@ export default function Gallery() {
                                     <div className='text'>
                                         <IoMdSearch
                                             className='display-1 text-black'
-                                            onClick={() => handleImageClick(row.image)}
+                                            onClick={() => handleImageClick(row)}
                                         />
                                     </div>
                                 </div>
@@ -63,7 +68,14 @@ export default function Gallery() {
             </Container>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Body>
-                    <img src={selectedImage} width={'100%'} className="img-fluid" alt="Selected Hair Style" />
+                    {selectedImage && (
+                        <img
+                            src={selectedImage.imageUrl}
+                            width={'100%'}
+                            className="img-fluid"
+                            alt="Selected Hair Style"
+                        />
+                    )}
                 </Modal.Body>
             </Modal>
         </Layout>

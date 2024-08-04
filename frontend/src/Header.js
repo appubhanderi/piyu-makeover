@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Nav, Navbar, Image, Button } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
+import { Container, Nav, Navbar, Image, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from './image/Piyu(3).png';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import firebaseApp from './Firebase';
 
 export default function Header() {
     const [show, setShow] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
     const [bookedDates, setBookedDates] = useState([]);
     const [disabledDates, setDisabledDates] = useState([]);
-    const [isPaymentComplete, setIsPaymentComplete] = useState(false);
     const allowedTimes = ['6:00 am', '9:00 am', '12:00 pm', '3:00 pm', '6:00 pm'];
 
     const handleClose = () => setShow(false);
@@ -23,45 +21,34 @@ export default function Header() {
 
     useEffect(() => {
         fetchBookedDates();
-        loadRazorpayScript();
     }, []);
 
-    useEffect(() => {
-        updateDisabledDates();
-    }, [bookedDates]);
-
-    const loadRazorpayScript = () => {
-        if (document.getElementById('razorpay-script')) return;
-
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-        script.id = 'razorpay-script';
-        script.onload = () => console.log('Razorpay script loaded');
-        document.body.appendChild(script);
-    };
-
     const fetchBookedDates = () => {
-        axios.get('http://localhost:5000/PiyuMakeoverUser/getBooking')
-            .then((response) => {
-                setBookedDates(response.data);
+        const db = firebaseApp.firestore();
+        db.collection("bookings").get()
+            .then((querySnapshot) => {
+                const bookings = querySnapshot.docs.map(doc => doc.data());
+                setBookedDates(bookings);
+                updateDisabledDates(bookings);
             })
             .catch((error) => {
                 console.error('Error fetching booked dates:', error);
+                toast.error('Error fetching booked dates. Please try again.');
             });
     };
 
-    const updateDisabledDates = () => {
-        const bookedDatesWithAllSlots = bookedDates.reduce((acc, date) => {
-            const dateStr = new Date(date.date).toDateString();
+    const updateDisabledDates = (bookings) => {
+        const bookedDatesWithSlots = bookings.reduce((acc, booking) => {
+            const dateStr = new Date(booking.date.seconds * 1000).toDateString();
             if (!acc[dateStr]) {
                 acc[dateStr] = [];
             }
-            acc[dateStr].push(date.bookingSlot);
+            acc[dateStr].push(booking.bookingSlot);
             return acc;
         }, {});
 
-        const allDatesWithAllSlotsBooked = Object.keys(bookedDatesWithAllSlots).filter(dateStr =>
-            allowedTimes.every(slot => bookedDatesWithAllSlots[dateStr].includes(slot))
+        const allDatesWithAllSlotsBooked = Object.keys(bookedDatesWithSlots).filter(dateStr =>
+            allowedTimes.every(slot => bookedDatesWithSlots[dateStr].includes(slot))
         );
 
         setDisabledDates(allDatesWithAllSlotsBooked.map(dateStr => new Date(dateStr)));
@@ -82,31 +69,34 @@ export default function Header() {
                 .matches(/^[0-9]{10}$/, 'Invalid contact number'),
             service: Yup.string().required('Select a service'),
             date: Yup.date().required('Select a date'),
+            bookingSlot: Yup.string().required('Select a time slot'),
         }),
         onSubmit: (values) => {
-            if (!isPaymentComplete) {
-                toast.error('Please complete the payment first.');
-                return;
-            }
-
             const alreadyBooked = bookedDates.some(
-                (date) => new Date(date.date).toDateString() === new Date(values.date).toDateString() && date.bookingSlot === values.bookingSlot
+                (date) => new Date(date.date.seconds * 1000).toDateString() === new Date(values.date).toDateString() && date.bookingSlot === values.bookingSlot
             );
 
             if (alreadyBooked) {
-                toast('You have already booked an appointment. Please contact us to reschedule or cancel your existing appointment.');
+                toast.error('You have already booked an appointment. Please contact us to reschedule or cancel your existing appointment.');
                 formik.resetForm();
             } else {
-                axios.post('http://localhost:5000/PiyuMakeoverUser/book', values)
-                    .then((response) => {
+                const db = firebaseApp.firestore();
+                db.collection("bookings").add({
+                    name: values.name,
+                    contact: values.contact,
+                    service: values.service,
+                    date: values.date,
+                    bookingSlot: values.bookingSlot,
+                })
+                    .then(() => {
                         formik.resetForm();
-                        handleClose();
                         fetchBookedDates();
+                        handleClose();
                         toast('Booking Successful');
                     })
                     .catch((error) => {
                         console.error('Error submitting form:', error);
-                        toast.error('Failed to book appointment. Please try again.');
+                        toast('Failed to book appointment. Please try again.');
                     });
             }
         },
@@ -115,13 +105,13 @@ export default function Header() {
     const handleDateChange = (date) => {
         setSelectedDate(date);
         formik.setFieldValue('date', date);
-        formik.setFieldValue('bookingSlot', ''); // Reset time slot when date changes
+        formik.setFieldValue('bookingSlot', '');
     };
 
     const isBooked = (date, slot) => {
         if (!date) return false;
         return bookedDates.some(
-            (bookedDate) => new Date(bookedDate.date).toDateString() === date.toDateString() && bookedDate.bookingSlot === slot
+            (bookedDate) => new Date(bookedDate.date.seconds * 1000).toDateString() === date.toDateString() && bookedDate.bookingSlot === slot
         );
     };
 
@@ -146,32 +136,6 @@ export default function Header() {
         formik.setFieldValue('bookingSlot', time);
     };
 
-    const handlePayment = () => {
-        const options = {
-            key: 'rzp_test_7A8QRG48dXg1Qi', 
-            amount: 100 * 100, 
-            currency: 'INR',
-            name: 'Your Company Name',
-            description: 'Booking Payment',
-            handler: function (response) {
-              
-                setIsPaymentComplete(true);
-                toast.success('Payment successful. You can now confirm your booking.');
-            },
-            prefill: {
-                name: formik.values.name,
-                email: '', 
-                contact: formik.values.contact
-            },
-            theme: {
-                color: '#3399cc'
-            }
-        };
-
-        const paymentObject = new window.Razorpay(options);
-        paymentObject.open();
-    };
-
     return (
         <>
             <ToastContainer />
@@ -187,7 +151,7 @@ export default function Header() {
                             <Link className='nav-link active' to='/services'>SERVICES</Link>
                             <Link className='nav-link active' to='/gallery'>GALLERY</Link>
                             <Link className='nav-link active' to='/testimonials'>TESTIMONIALS</Link>
-                            <Link className='nav-link active' to='/contact'>CONTACT</Link>
+                            <Link className='nav-link active' to='/contect'>CONTACT</Link>
                         </Nav>
                         <Nav>
                             <Button className='btn btn-danger' style={{ width: 120 }} onClick={handleShow}>
@@ -287,7 +251,7 @@ export default function Header() {
                                             key={time}
                                             variant={time === formik.values.bookingSlot ? 'success' : 'outline-success'}
                                             onClick={() => handleTimeChange(time)}
-                                            disabled={!selectedDate || isBooked(selectedDate, time) || isPastTimeSlot(selectedDate, time)}
+                                            disabled={isBooked(selectedDate, time) || isPastTimeSlot(selectedDate, time)}
                                         >
                                             {time}
                                         </Button>
@@ -295,7 +259,7 @@ export default function Header() {
                                 </div>
                             </div>
                         </div>
-                        <button type="button" className="btn btn-primary me-2" onClick={handlePayment}>Pay & Book</button>
+                        <button type="submit" className="btn btn-primary me-2">Pay & Book</button>
                         <button type="button" className="btn btn-secondary me-2" onClick={handleClose}>Close</button>
                     </form>
                 </Modal.Body>
