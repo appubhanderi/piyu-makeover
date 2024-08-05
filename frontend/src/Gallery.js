@@ -44,8 +44,8 @@ export default function Gallery() {
                 <h2 className='text-center pb-3'>My Work</h2>
                 <Row className='justify-content-center gap-4 p-3'>
                     {myWorkImg.map((row) => (
-                        <Col md={3} key={row._id} className='cartImg rounded'>
-                            <div className=' icon'>
+                        <Col md={3} key={row._id} className='cartImg rounded' data-aos="zoom-in-up" data-aos-duration="3000">
+                            < div className=' icon' >
                                 <img
                                     width={'100%'}
                                     src={row.imageUrl}
@@ -65,7 +65,7 @@ export default function Gallery() {
                         </Col>
                     ))}
                 </Row>
-            </Container>
+            </Container >
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Body>
                     {selectedImage && (
@@ -78,6 +78,6 @@ export default function Gallery() {
                     )}
                 </Modal.Body>
             </Modal>
-        </Layout>
+        </Layout >
     );
 }

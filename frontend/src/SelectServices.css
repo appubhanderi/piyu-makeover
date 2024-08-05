@@ -1,0 +1,29 @@
+/* Base style for nav links */
+.service-card {
+    transition: all 0.4s ease;
+}
+
+/* Hover effect with animation */
+.service-card:hover {
+    transform: scale(1.1);
+}
+
+/* Optional: Animation keyframes for additional effects */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Applying pulse animation on hover */
+.service-card:hover {
+    animation: pulse 0.8s ease infinite;
+}

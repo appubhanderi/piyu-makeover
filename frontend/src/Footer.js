@@ -23,12 +23,20 @@ export default function Footer() {
           </Col>
           <Col md={6} className='text-center'>
             <div className='fs-2'>
-              <h1>Follow Us </h1><hr />
-              <a className='pe-3' style={{ color: 'black' }} href="https://accounts.snapchat.com/accounts/v2/login"><FaSnapchat /></a>
-              <a className='pe-3' style={{ color: 'black' }} href="https://www.instagram.com/accounts/login/"><FaInstagram /></a>
-              <a style={{ color: 'black' }} href="https://www.facebook.com/login/"><FaFacebook /></a>
+              <h1>Follow Us</h1>
+              <hr />
+              <a className='pe-3 icon-hover' style={{ color: 'black' }} href="https://accounts.snapchat.com/accounts/v2/login">
+                <FaSnapchat />
+              </a>
+              <a className='pe-3 icon-hover' style={{ color: 'black' }} href="https://www.instagram.com/accounts/login/">
+                <FaInstagram />
+              </a>
+              <a className='icon-hover' style={{ color: 'black' }} href="https://www.facebook.com/login/">
+                <FaFacebook />
+              </a>
             </div>
-          </Col><hr />
+          </Col>
+          <hr />
           <h6 className='text-center'>© 2024 Piyu Makeover.</h6>
         </Row>
       </Container>

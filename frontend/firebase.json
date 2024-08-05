@@ -1,7 +1,7 @@
 {
   "hosting": {
-      "site": "piyu-makeover",
-      "public": "build",
+    "site": "piyu-makeover",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
