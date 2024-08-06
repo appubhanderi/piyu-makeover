@@ -13,6 +13,47 @@ body {
   background-color: #c2e7e0;
 }
 
+
+
+/* Base style for nav links */
+.nav-link {
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* Hover effect with animation */
+.nav-link:hover {
+  transform: scale(1.1);
+  overflow: hidden;
+}
+
+/* Optional: Animation keyframes for additional effects */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Applying pulse animation on hover */
+.nav-link:hover {
+  animation: pulse 0.8s ease infinite;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
 .custom-table {
   border-radius: 10px;
   overflow: hidden;

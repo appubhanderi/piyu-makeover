@@ -26,8 +26,8 @@ export default function AdminHeader() {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" className="Header_nav fixed-top mb-5">
-                <Image src={logo} width={180} style={{ borderRadius: 5 }} alt='Logo' />
+            <Navbar collapseOnSelect expand="lg" className="Header_nav fixed-top mb-5 ">
+                <Image src={logo} width={180} style={{ borderRadius: 5 }} alt='Logo' className='ms-4 nav-link' />
             </Navbar>
 
             <Sidebar
@@ -41,17 +41,16 @@ export default function AdminHeader() {
                 breakPoint="lg">
 
                 <Menu iconShape="square" className='pt-4 mt-4'>
-                    <MenuItem active={true} icon={<FiHome />} component={<Link to="/" />}>
+                    <MenuItem className='nav-link' active={true} icon={<FiHome />} component={<Link to="/" />}>
                         Home
                     </MenuItem>
-                    <MenuItem icon={<FaCloudUploadAlt />} component={<Link to="/UploadImage" />}>Upload Image</MenuItem>
-                    <MenuItem icon={<FaTableList />} component={<Link to="/AdminHome" />}>Booking Slot</MenuItem>
-                    <MenuItem icon={<RiGalleryFill />} component={<Link to="/Gallery" />}>Gallery</MenuItem>
-                    <MenuItem icon={<RiGalleryFill />} component={<Link to="/PaymentPage " />}>PaymentPage </MenuItem>
+                    <MenuItem className='nav-link' icon={<FaCloudUploadAlt />} component={<Link to="/UploadImage" />}>Upload Image</MenuItem>
+                    <MenuItem className='nav-link' icon={<FaTableList />} component={<Link to="/AdminHome" />}>Booking Slot</MenuItem>
+                    <MenuItem className='nav-link' icon={<RiGalleryFill />} component={<Link to="/Gallery" />}>Gallery</MenuItem>
                 </Menu>
                 <div className="sidebar-footer">
                     <Menu iconShape="square">
-                        <MenuItem icon={<FiLogOut />} onClick={handleLogout}>Logout</MenuItem>
+                        <MenuItem className='nav-link' icon={<FiLogOut />} onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
                 </div>
             </Sidebar>

@@ -10,6 +10,11 @@ export default function BookingSlot() {
 
     useEffect(() => {
         fetchBookedDates();
+        const interval = setInterval(() => {
+            cleanupOldBookings();
+        }, 60000); 
+
+        return () => clearInterval(interval); 
     }, []);
 
     const fetchBookedDates = () => {
@@ -22,6 +27,27 @@ export default function BookingSlot() {
             .catch((error) => {
                 console.error('Error fetching booked dates:', error);
                 toast('Error fetching booked dates. Please try again.');
+            });
+    };
+
+    const cleanupOldBookings = () => {
+        const db = firebaseApp.firestore();
+        const now = new Date();
+        db.collection("bookings").where('date', '<', now).get()
+            .then((querySnapshot) => {
+                const batch = db.batch();
+                querySnapshot.docs.forEach(doc => {
+                    batch.delete(doc.ref);
+                });
+                return batch.commit();
+            })
+            .then(() => {
+                console.log('Old bookings deleted successfully');
+                fetchBookedDates(); 
+            })
+            .catch((error) => {
+                console.error('Error deleting old bookings:', error);
+                toast('Error deleting old bookings. Please try again.');
             });
     };
 
@@ -42,7 +68,6 @@ export default function BookingSlot() {
                         </thead>
                         <tbody>
                             {bookedDates.map((row, index) => {
-                                // Check if the date is a timestamp and convert it
                                 const date = row.date.seconds ? new Date(row.date.seconds * 1000) : new Date(row.date);
                                 return (
                                     <tr key={index}>
