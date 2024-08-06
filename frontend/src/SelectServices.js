@@ -8,7 +8,7 @@ export default function SelectServices(props) {
     return (
         <Container className='pt-4'>
             <h1 className='text-center pb-3'>Select Your Services</h1><hr />
-            <Row className='text-center justify-content-center'>
+            <Row className='text-center justify-content-center' style={{ overflowX: 'hidden', overflowY: 'hidden' }}>
                 {props.services.map((service, index) => (
                     <Col sm={6} md={3} lg={3} key={index} className="pb-3">
                         <div className="service-card  mb-4">
