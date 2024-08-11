@@ -35,9 +35,10 @@ export default function Contact() {
         <Layout>
             <HomeTitle />
             <h1 className='text-center pt-3' data-aos="zoom-in" data-aos-duration="3000" data-aos-delay="100">Contect Us</h1><hr />
-            <Container fluid className='bg-white pt-3 pb-5'>
-                <Row className='ps-md-5 pe-md-5'>
-                    <Col md={6} className='pt-3'>
+            <Container className=' pt-3 pb-3'>
+                <Row className='mb-3 p-2'>
+                    <Col md={2}></Col>
+                    <Col md={8} style={{ borderRadius: '2%', backgroundColor: '#ff9fcf' }}>
                         <h1 className='text-center pb-3'>Send Us A Message</h1>
                         <Form onSubmit={formik.handleSubmit}>
                             <Form.Group className="mb-3" controlId="formGroupName">
@@ -82,19 +83,22 @@ export default function Contact() {
                                     <div className="text-danger">{formik.errors.message}</div>
                                 )}
                             </Form.Group>
-                            <div className='text-center'>
+                            <div className='text-center mb-3'>
                                 <Button className='ps-4 pe-4 ' type="submit" disabled={formik.isSubmitting}>
                                     Submit
                                 </Button>
                             </div>
                         </Form>
                     </Col>
-                    <Col md={6} className='pt-3'>
+                    <Col md={2}></Col>
+                </Row>
+                <Row>
+                    <Col md={12} style={{ borderRadius: '2%' }}>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d8844.445967660067!2d72.85483256446527!3d21.246458191113543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1720334427051!5m2!1sen!2sin"
                             width={MapStyle.width}
                             height={MapStyle.height}
-                            style={{ border: 0 }}
+                            style={{ border: 2 }}
                             allowFullScreen=""
                             aria-hidden="false"
                             tabIndex="0"

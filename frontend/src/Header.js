@@ -93,6 +93,7 @@ export default function Header() {
                         fetchBookedDates();
                         handleClose();
                         toast('Booking Successful');
+                        sendWhatsappMessage(values);
                     })
                     .catch((error) => {
                         console.error('Error submitting form:', error);
@@ -136,11 +137,24 @@ export default function Header() {
         formik.setFieldValue('bookingSlot', time);
     };
 
+
+    const sendWhatsappMessage = (values) => {
+        const num = '+91' + 8980591955;
+        const msg = `Hello, Kajal Bhanderi. %0a%0a  Name: ${values.name} %0a%0a Contact: ${values.contact}
+         %0a%0a Service: ${values.service} %0a%0a Date: ${values.date} %0a%0a Time: ${values.bookingSlot}`;
+        window.open(`https://wa.me/${num}?text=${msg}`, '_blank').focus();
+    };
+
+
     return (
         <>
             <ToastContainer />
-            <Navbar collapseOnSelect expand="lg" className="bg-white Header_nav fixed-top">
-                <Container>
+            <Navbar collapseOnSelect expand="lg" className="fixed-top"
+                style={{
+                    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
+                    background: 'radial-gradient(circle, rgba(241, 201, 221, 1) 0%, rgba(253, 172, 212, 1) 30%, rgba(255, 105, 180, 1) 70%, rgba(255, 105, 180, 1) 100%)',
+                }}>
+                <Container style={{ overflow: 'hidden' }}>
                     <Link className='nav-link active pe-3' to='/'>
                         <Image src={logo} width={180} style={{ borderRadius: 5 }} alt='Logo' />
                     </Link>
@@ -154,7 +168,14 @@ export default function Header() {
                             <Link className='nav-link active' to='/contact'>CONTACT</Link>
                         </Nav>
                         <Nav>
-                            <Button className='btn btn-danger' style={{ width: 120 }} onClick={handleShow}>
+                            <Button
+                                className='btn btn-danger btnAppointment'
+                                style={{
+                                    backgroundImage: 'linear-gradient(to right, #0575E6 0%, #021B79 51%, #0575E6 100%)',
+                                    transition: '0.5s',
+                                    backgroundSize: '200% auto',
+                                    maxWidth: '120px'
+                                }} onClick={handleShow}  >
                                 Appointment
                             </Button>
                         </Nav>
@@ -259,7 +280,7 @@ export default function Header() {
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" className="btn btn-primary me-2">Pay & Book</button>
+                        <button type="submit" className="btn btn-primary me-2">Book Now</button>
                         <button type="button" className="btn btn-secondary me-2" onClick={handleClose}>Close</button>
                     </form>
                 </Modal.Body>

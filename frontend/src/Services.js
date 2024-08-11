@@ -32,11 +32,12 @@ export default function Services() {
         <Layout>
             <HomeTitle />
             <h1 className='text-center pt-3' data-aos="zoom-in" data-aos-duration="3000" data-aos-delay="100">Services</h1><hr />
-            <Container className='HomeService mb-4 mt-4' style={{
-                backgroundColor: '#fff',
-                borderRadius: '8px',
-                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-            }}>
+            <Container className='HomeService mb-4 mt-4'
+                style={{
+                    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
+                    background: 'radial-gradient(circle, rgba(241, 201, 221, 1) 0%, rgba(253, 172, 212, 1) 30%, rgba(255, 105, 180, 1) 70%, rgba(255, 105, 180, 1) 100%)',
+                    borderRadius: '8px',
+                }}>
                 <Row style={{ overflowX: 'hidden', overflowY: 'hidden' }}>
                     <h4 className='display-3 fw-bold text-center p-2'>Welcome To Piyu Makeover</h4>
                     <h1 className='pb-3 text-center'>At Home In Surat</h1>
@@ -46,7 +47,7 @@ export default function Services() {
                             <div className=" mb-2">
                                 <Link className=' nav-link active pe-3' to={service.link}>
                                     <img src={service.img} style={{ borderRadius: '100%', width: '130px', height: '130px' }} alt='' />
-                                    <h4 className="fs-3 fw-semibold">{service.name}</h4>
+                                    <h4 className="fs-3 fw-semibold" style={{ color: '#333333' }}>{service.name}</h4>
                                 </Link>
                             </div>
                         </Col>

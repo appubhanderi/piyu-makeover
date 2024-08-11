@@ -9,7 +9,7 @@ export default function Home() {
     <Layout>
       <HomeTitle />
       <HomeDescription />
-      <SeriviceCarousel />
+      <SeriviceCarousel className='mb-4' />
     </Layout>
 
   )

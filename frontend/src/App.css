@@ -2,30 +2,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
 body {
-    background-color: #ff9fcf !important;
+    color: rgb(2, 27, 121) !important;
+    font-family: Arial, sans-serif;
+
 }
 
+/* Multi pages-------------------- */
 
-/* Header---------------- */
-
-.Header_nav {
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.10);
+img.img-fluid {
+    height: 100% !important;
 }
 
+.HomeTitle marquee,
+.HomeService h4,
+.Service,
+.homepages h1,
+.About h5 {
+    font-family: "Dancing Script", cursive;
+}
 
-/* Base style for nav links */
+/* Header Pages-------------------- */
+
 .nav-link {
     transition: all 0.4s ease;
     overflow: hidden;
+    color: rgb(2, 27, 121) !important;
+    font-weight: 600 !important;
 }
 
 /* Hover effect with animation */
+
 .nav-link:hover {
     transform: scale(1.1);
     overflow: hidden;
 }
 
 /* Optional: Animation keyframes for additional effects */
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -41,23 +54,18 @@ body {
 }
 
 /* Applying pulse animation on hover */
+
 .nav-link:hover {
     animation: pulse 0.8s ease infinite;
     overflow: hidden;
 }
 
-
-/* Home Page---------------- */
-
-
-.HomeTitle marquee,
-.HomeService h4,
-.Service,
-.homepages h1,
-.About h5 {
-    font-family: "Dancing Script", cursive;
+.btnAppointment:hover {
+    background-position: right center;
 }
 
+
+/* Home Pages-------------------- */
 
 .HomeTitle {
     background-image: url(./image/header-bg.jpg);
@@ -70,79 +78,6 @@ body {
     display: inline-block;
     animation: rainbow 5s linear infinite;
 }
-
-
-.homeCarousel img {
-    width: 150px !important;
-    height: 150px !important;
-    border-radius: 50% !important;
-}
-
-.slick-dots li button:before {
-    font-size: 20px !important;
-}
-
-.slick-prev,
-.slick-next {
-    font-size: 20px !important;
-    margin-left: 20px;
-}
-
-.slick-prev,
-.slick-next {
-    margin-right: 30px;
-}
-
-.slick-prev:before,
-.slick-next:before {
-    font-size: 30px !important;
-}
-
-.slick-prev,
-.slick-next {
-    z-index: 10;
-}
-
-/* Footer---------------- */
-
-.footer {
-    background-image: url(./image/footer.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.icon-hover:hover {
-    color: #007bff !important;
-    transform: scale(1.2) !important;
-    transition: color 0.3s ease, transform 0.3s ease !important;
-}
-
-
-
-
-
-
-
-@media screen and (max-width: 768px) {
-    #box-2 {
-        order: 1;
-    }
-
-    #box-1 {
-        order: 2;
-    }
-
-    #box-4 {
-        order: 1;
-    }
-
-    #box-3 {
-        order: 2;
-    }
-
-}
-
 
 @keyframes rainbow {
     0% {
@@ -177,3 +112,115 @@ body {
         color: red;
     }
 }
+
+
+.homeCarousel img {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 50% !important;
+}
+
+.slick-dots li button:before {
+    font-size: 20px !important;
+}
+
+.slick-prev,
+.slick-next {
+    font-size: 20px !important;
+    margin-left: 20px;
+}
+
+.slick-prev,
+.slick-next {
+    margin-right: 30px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 30px !important;
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 10;
+}
+
+/* Card pages------------ */
+
+.cardBtn {
+    border: 1px solid rgb(2, 27, 121) !important;
+    color: rgb(2, 27, 121) !important;
+}
+
+.cardBtn:hover {
+    background-color: rgb(2, 27, 121) !important;
+    color: white !important;
+}
+
+/* Footer---------------- */
+
+.footer {
+    background-image: url(./image/footer.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon_hover {
+    transition: all 0.4s ease;
+    overflow: hidden;
+    color: rgb(2, 27, 121) !important;
+
+}
+
+.icon_hover:hover {
+    transform: scale(1.1);
+    overflow: hidden;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.icon_hover:hover {
+    animation: pulse 0.8s ease infinite;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    #box-2 {
+        order: 1;
+    }
+
+    #box-1 {
+        order: 2;
+    }
+
+    #box-4 {
+        order: 1;
+    }
+
+    #box-3 {
+        order: 2;
+    }
+
+}
+
+

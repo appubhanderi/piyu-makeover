@@ -8,6 +8,9 @@ import Img4 from './image/slide4.png'
 export default function SeriviceCarousel() {
     const [imgArry, setImgArry] = useState([Img1, Img2, Img3, Img4])
     return (
-        <HomeSlider image={imgArry} />
+        <>
+            <HomeSlider image={imgArry} />
+            <div className='mb-3'></div>
+        </>
     )
 }
