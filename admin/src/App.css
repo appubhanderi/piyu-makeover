@@ -43,15 +43,12 @@ body {
 }
 
 /* Applying pulse animation on hover */
+
+
 .nav-link:hover {
   animation: pulse 0.8s ease infinite;
   overflow: hidden;
 }
-
-
-
-
-
 
 
 .custom-table {
