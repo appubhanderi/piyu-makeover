@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import SelectServices from './SelectServices';
+import BleachDtanCarousel from './BleachDtanCarousel';
+
 
 
 export default function BleachAndDtan() {
@@ -17,6 +19,9 @@ export default function BleachAndDtan() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <BleachDtanCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

@@ -50,7 +50,6 @@ export default function MakeupEngagement() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <Makeup />
             <h1 className='text-center pb-3'>Engagement Makeup</h1>
             <Cards service={cardArray} />

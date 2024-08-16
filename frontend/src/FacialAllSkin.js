@@ -7,7 +7,7 @@ import FacialAndCleanup from './FacialAndCleanup';
 export default function FacialAllSkin() {
     const services = [
         {
-            img:'https://firebasestorage.googleapis.com/v0/b/piyu-makeover.appspot.com/o/FacialCleanup4.jpg?alt=media&token=0fdea4dc-64c3-43b1-80e4-1e33ad8c18b6',
+            img: 'https://firebasestorage.googleapis.com/v0/b/piyu-makeover.appspot.com/o/FacialCleanup4.jpg?alt=media&token=0fdea4dc-64c3-43b1-80e4-1e33ad8c18b6',
             serviceName: "Vlcc Facial Package",
             price: "249",
             oldprice: "499",
@@ -129,7 +129,6 @@ export default function FacialAllSkin() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <FacialAndCleanup />
             <h1 className='text-center pb-3'>Classic Facial</h1>
             <Cards service={cardArray} />

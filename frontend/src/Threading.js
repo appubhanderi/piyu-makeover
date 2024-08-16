@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SelectServices from './SelectServices';
+import ThreadingCarousel from './ThreadingCarousel';
 
 export default function Threading() {
     const services = [
@@ -11,6 +12,9 @@ export default function Threading() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <ThreadingCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

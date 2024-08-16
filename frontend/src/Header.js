@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
 import firebaseApp from './Firebase';
+import { FaSquareWhatsapp } from "react-icons/fa6";
 
 export default function Header() {
     const [show, setShow] = useState(false);
@@ -25,7 +26,7 @@ export default function Header() {
 
     const fetchBookedDates = () => {
         const db = firebaseApp.firestore();
-        db.collection("bookings").get()
+        db.collection("Bookings").get()
             .then((querySnapshot) => {
                 const bookings = querySnapshot.docs.map(doc => doc.data());
                 setBookedDates(bookings);
@@ -81,7 +82,7 @@ export default function Header() {
                 formik.resetForm();
             } else {
                 const db = firebaseApp.firestore();
-                db.collection("bookings").add({
+                db.collection("Bookings").add({
                     name: values.name,
                     contact: values.contact,
                     service: values.service,
@@ -145,10 +146,18 @@ export default function Header() {
         window.open(`https://wa.me/${num}?text=${msg}`, '_blank').focus();
     };
 
+    const sendWhatsapp = () => {
+        const num = '+91' + 8980591955;
+        const msg = `Hello, Kajal Bhanderi. `;
+        window.open(`https://wa.me/${num}?text=${msg}`, '_blank').focus();
+    };
+
 
     return (
         <>
             <ToastContainer />
+            <FaSquareWhatsapp className='display-3 fixed-bottom ms-auto mb-3 me-3'
+                style={{ color: 'green', cursor: 'pointer' }} onClick={sendWhatsapp} />
             <Navbar collapseOnSelect expand="lg" className="fixed-top"
                 style={{
                     boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
@@ -245,39 +254,37 @@ export default function Header() {
                                 <div className="invalid-feedback">{formik.errors.service}</div>
                             ) : null}
                         </div>
-                        <div className="mb-2">
-                            <label htmlFor="date" className="form-label">Select a Date</label>
-                            <div className="mb-2 d-flex justify-content-center">
-                                <DatePicker
-                                    selected={selectedDate}
-                                    onChange={(date) => handleDateChange(date)}
-                                    inline
-                                    className="datePicker form-control"
-                                    disabledKeyboardNavigation
-                                    excludeDates={disabledDates}
-                                    minDate={new Date()}
-                                />
-                                {formik.touched.date && formik.errors.date ? (
-                                    <div className="invalid-feedback">{formik.errors.date}</div>
-                                ) : null}
-                            </div>
+                        <div className="mb-2 d-md-flex">
+                            <label htmlFor="date" className="form-label me-3">Select a Date</label>
+                            <DatePicker
+                                placeholderText='Select a Date'
+                                selected={selectedDate}
+                                showIcon
+                                toggleCalendarOnIconClick
+                                onChange={(date) => handleDateChange(date)}
+                                className="datePicker form-control mt-1"
+                                disabledKeyboardNavigation
+                                excludeDates={disabledDates}
+                                minDate={new Date()}
+                            />
+                            {formik.touched.date && formik.errors.date ? (
+                                <div className="invalid-feedback">{formik.errors.date}</div>
+                            ) : null}
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-2 ">
                             <label htmlFor="bookingSlot" className="form-label">Select a Time Slot</label>
-                            <div className="mb-2 row justify-content-center ms-auto">
-                                <div className='ms-auto '>
-                                    {allowedTimes.map((time) => (
-                                        <Button
-                                            className='ms-3 mb-3'
-                                            key={time}
-                                            variant={time === formik.values.bookingSlot ? 'success' : 'outline-success'}
-                                            onClick={() => handleTimeChange(time)}
-                                            disabled={isBooked(selectedDate, time) || isPastTimeSlot(selectedDate, time)}
-                                        >
-                                            {time}
-                                        </Button>
-                                    ))}
-                                </div>
+                            <div className='text-center'>
+                                {allowedTimes.map((time) => (
+                                    <Button
+                                        className='ms-1 mb-3'
+                                        key={time}
+                                        variant={time === formik.values.bookingSlot ? 'success' : 'outline-success'}
+                                        onClick={() => handleTimeChange(time)}
+                                        disabled={isBooked(selectedDate, time) || isPastTimeSlot(selectedDate, time)}
+                                    >
+                                        {time}
+                                    </Button>
+                                ))}
                             </div>
                         </div>
                         <button type="submit" className="btn btn-primary me-2">Book Now</button>

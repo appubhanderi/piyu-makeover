@@ -63,7 +63,6 @@ export default function PreBridalGrooming() {
     const [cardArray, setCardArray] = useState(services);
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <PreBridal />
             <h1 className='text-center pb-3'>Pre-Bridal Grooming</h1>
             <Cards service={cardArray} />

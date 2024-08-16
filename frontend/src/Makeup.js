@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import SelectServices from './SelectServices';
+import MakeupCarousel from './MakeupCarousel'
+
 
 
 export default function Makeup() {
@@ -27,6 +29,9 @@ export default function Makeup() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <MakeupCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectServices from './SelectServices';
+import ManiPadiCarousel from './ManiPadiCarousel';
 
 
 export default function ManiAndPadi() {
@@ -22,6 +23,9 @@ export default function ManiAndPadi() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <ManiPadiCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

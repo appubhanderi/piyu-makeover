@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectServices from './SelectServices';
+import WaxingCarousel from './WaxingCarousel';
 
 
 export default function Waxing() {
@@ -27,6 +28,9 @@ export default function Waxing() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <WaxingCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

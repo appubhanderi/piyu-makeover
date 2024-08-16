@@ -47,7 +47,7 @@ export default function Services() {
                             <div className=" mb-2">
                                 <Link className=' nav-link active pe-3' to={service.link}>
                                     <img src={service.img} style={{ borderRadius: '100%', width: '130px', height: '130px' }} alt='' />
-                                    <h4 className="fs-3 fw-semibold" style={{ color: '#333333' }}>{service.name}</h4>
+                                    <h4 className="fs-3 fw-semibold" >{service.name}</h4>
                                 </Link>
                             </div>
                         </Col>

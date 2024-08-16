@@ -65,7 +65,6 @@ export default function ThreadingPackage() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <Threading />
             <h1 className='text-center  pb-3'>Threading </h1>
             <Cards service={cardArray} />

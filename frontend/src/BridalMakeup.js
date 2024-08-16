@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectServices from './SelectServices';
+import BridalMakeupCarousel from './BridalMakeupCarousel';
 
 
 
@@ -18,6 +19,9 @@ export default function BridalMakeup() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <BridalMakeupCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

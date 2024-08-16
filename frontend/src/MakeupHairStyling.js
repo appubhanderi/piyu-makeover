@@ -81,7 +81,6 @@ export default function MakeupHairStyling() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <Makeup />
             <h1 className='text-center pb-3'>Hair Styling</h1>
             <Cards service={cardArray} />

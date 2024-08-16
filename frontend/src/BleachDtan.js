@@ -75,7 +75,6 @@ export default function BleachDtan() {
     const [cardArray, setCardArray] = useState(services);
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <BleachAndDtan />
             <h1 className='text-center pb-3'>De-Tan</h1>
             <Cards service={cardArray} />

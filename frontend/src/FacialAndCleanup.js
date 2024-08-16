@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectServices from './SelectServices';
+import FacialCleanupCarousel from './FacialCleanupCarousel';
 
 
 export default function FacialAndCleanup() {
@@ -27,6 +28,9 @@ export default function FacialAndCleanup() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <FacialCleanupCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

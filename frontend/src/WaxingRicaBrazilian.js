@@ -90,7 +90,6 @@ export default function WaxingRicaBrazilian() {
     const [cardArray, setCardArray] = useState(services);
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <Waxing />
             <h1 className='text-center pb-3'>Rica Braziliyan </h1>
             <Cards service={cardArray} />

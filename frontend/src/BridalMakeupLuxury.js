@@ -46,7 +46,6 @@ export default function BridalMakeupLuxury() {
     const [cardArray, setCardArray] = useState(services);
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <BridalMakeup />
             <h1 className='text-center pb-3'>Luxury Bridal Makeup</h1>
             <Cards service={cardArray} />

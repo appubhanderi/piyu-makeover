@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectServices from './SelectServices';
+import HairCareCarousel from './HairCareCarousel';
 
 
 
@@ -42,6 +43,9 @@ export default function HairCare() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <HairCareCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

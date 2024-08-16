@@ -5,6 +5,7 @@ import Waxing from './Waxing';
 
 
 
+
 export default function WaxingRica() {
     const services = [
         {
@@ -122,7 +123,6 @@ export default function WaxingRica() {
     const [cardArray, setCardArray] = useState(services);
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <Waxing />
             <h1 className='text-center pb-3'>Rics Waxing </h1>
             <Cards service={cardArray} />

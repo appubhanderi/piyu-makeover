@@ -109,7 +109,6 @@ export default function HairCareColouring() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <HairCare />
             <h1 className='text-center pb-3'>Hair Colouring</h1>
             <Cards service={cardArray} />

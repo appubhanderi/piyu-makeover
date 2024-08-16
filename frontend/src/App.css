@@ -3,7 +3,7 @@
 
 body {
     color: rgb(2, 27, 121) !important;
-    font-family: Arial, sans-serif;
+    font-family: "Merienda", cursive !important;
 
 }
 
@@ -74,6 +74,8 @@ img.img-fluid {
     background-size: cover;
 }
 
+/* marquee taxt rainbow----------- */
+
 .rainbow-text {
     display: inline-block;
     animation: rainbow 5s linear infinite;
@@ -113,6 +115,44 @@ img.img-fluid {
     }
 }
 
+
+
+/* Offer text------------------ */
+
+
+.offer {
+    background-color: #00308F;
+}
+
+.offer-text {
+    font-size: 3rem;
+    color: white;
+    font-family: 'Merienda', cursive;
+    animation-name: glow;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0px 0px 5px #fff, 0px 0px 5px #614ad3;
+    }
+
+    to {
+        text-shadow: 0px 0px 20px #fff, 0px 0px 20px #614ad3;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* homeCarousel------------------ */
 
 .homeCarousel img {
     width: 150px !important;
@@ -222,5 +262,3 @@ img.img-fluid {
     }
 
 }
-
-

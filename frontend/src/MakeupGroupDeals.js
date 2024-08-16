@@ -37,7 +37,6 @@ export default function MakeupGroupDeals() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <Makeup />
             <h1 className='text-center pb-3'>Group Deals</h1>
             <Cards service={cardArray} />

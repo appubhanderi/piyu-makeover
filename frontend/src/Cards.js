@@ -45,7 +45,7 @@ export default function Cards({ service }) {
                         <div>
                             <ul>
                                 {item.listItem.map((list, idx) => (
-                                    <li key={idx} style={{ color: '#333333' }}>{list}</li>
+                                    <li  key={idx} style={{ fontFamily: "Merienda, cursive" }}>{list}</li>
                                 ))}
                             </ul>
                         </div>

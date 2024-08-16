@@ -4,17 +4,20 @@ import homeImg from './image/PUMakeover (9).jpg';
 
 export default function HomeDescription() {
     return (
-        <Container className='pt-4'>
+        <Container className=''>
             <h1 className='text-center pt-3' data-aos="zoom-in" data-aos-duration="3000" data-aos-delay="100">Home</h1><hr />
             <Row className='' style={{ overflow: 'hidden' }}>
                 <Col md={6} className='p-md-4 mb-2' data-aos="zoom-out-up" data-aos-duration="3000" >
-                    <img src={homeImg} className='img-fluid' style={{ borderRadius: '3%' }} alt='' />
+                    <img src={homeImg} className='img-fluid'
+                        style={{
+                            borderRadius: '3%',
+                            boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
+                        }} alt='' />
                 </Col>
                 <Col md={6} className='pt-4 mb-3 homepages'>
                     <div className='p-2'
                         style={{
                             boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
-                            background: 'radial-gradient(circle, rgba(241, 201, 221, 1) 0%, rgba(253, 172, 212, 1) 30%, rgba(255, 105, 180, 1) 70%, rgba(255, 105, 180, 1) 100%)',
                             border: '1px solid rgb(2, 27, 121)',
                             borderRadius: '3%'
                         }}>

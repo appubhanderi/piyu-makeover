@@ -43,7 +43,6 @@ export default function FacialOilySkin() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <FacialAndCleanup />
             <h1 className='text-center pb-3'>Luxury Facial</h1>
             <Cards service={cardArray} />

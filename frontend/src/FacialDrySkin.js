@@ -43,7 +43,6 @@ export default function FacialDrySkin() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <FacialAndCleanup />
             <h1 className='text-center pb-3'>Premium Facial</h1>
             <Cards service={cardArray} />

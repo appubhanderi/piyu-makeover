@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectServices from './SelectServices';
+import PreBridalCarousel from './PreBridalCarousel';
 
 
 export default function PreBridal() {
@@ -17,6 +18,9 @@ export default function PreBridal() {
     ];
     const [serviceArry, setServiceArry] = useState(services);
     return (
-        <SelectServices services={serviceArry} />
+        <>
+            <PreBridalCarousel />
+            <SelectServices services={serviceArry} />
+        </>
     );
 }

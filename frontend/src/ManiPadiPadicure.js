@@ -57,7 +57,6 @@ export default function ManiPadiPadicure() {
     const [cardArray, setCardArray] = useState(services);
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <ManiAndPadi />
             <h1 className='text-center pb-3'>Padicure</h1>
             <Cards service={cardArray} />

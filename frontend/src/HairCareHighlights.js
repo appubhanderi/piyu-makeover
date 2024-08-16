@@ -62,7 +62,6 @@ export default function HairCareHighlights() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <HairCare />
             <h1 className='text-center pb-3'>Hair Highlights</h1>
             <Cards service={cardArray} />

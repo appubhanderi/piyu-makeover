@@ -6,6 +6,7 @@ import BleachAndDtan from './BleachAndDtan';
 
 
 
+
 export default function Bleach() {
     const services = [
         {
@@ -88,7 +89,6 @@ export default function Bleach() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <BleachAndDtan />
             <h1 className='text-center pb-3' >Bleach</h1>
             <Cards service={cardArray} />

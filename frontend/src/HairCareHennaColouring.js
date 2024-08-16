@@ -39,7 +39,6 @@ export default function HairCareHennaColouring() {
 
     return (
         <Layout>
-            <div className='pt-5 mt-4'></div>
             <HairCare />
             <h1 className='text-center pb-3'>Henna Colouring</h1>
             <Cards service={cardArray} />
