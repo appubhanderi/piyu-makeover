@@ -67,7 +67,7 @@ export default function Gallery() {
                 <Row className='justify-content-end'>
                     <Col md={10}>
                         <h3 className='text-center mb-5 mt-5'>Image Gallery</h3>
-                        <Table striped bordered hover responsive>
+                        <Table striped bordered hover responsive >
                             <thead>
                                 <tr>
                                     <th>Image</th>

@@ -12,14 +12,14 @@ export default function BookingSlot() {
         fetchBookedDates();
         const interval = setInterval(() => {
             cleanupOldBookings();
-        }, 60000); 
+        }, 60000);
 
-        return () => clearInterval(interval); 
+        return () => clearInterval(interval);
     }, []);
 
     const fetchBookedDates = () => {
         const db = firebaseApp.firestore();
-        db.collection("bookings").get()
+        db.collection("Bookings").get()
             .then((querySnapshot) => {
                 const bookings = querySnapshot.docs.map(doc => doc.data());
                 setBookedDates(bookings);
@@ -33,7 +33,7 @@ export default function BookingSlot() {
     const cleanupOldBookings = () => {
         const db = firebaseApp.firestore();
         const now = new Date();
-        db.collection("bookings").where('date', '<', now).get()
+        db.collection("Bookings").where('date', '<', now).get()
             .then((querySnapshot) => {
                 const batch = db.batch();
                 querySnapshot.docs.forEach(doc => {
@@ -43,7 +43,7 @@ export default function BookingSlot() {
             })
             .then(() => {
                 console.log('Old bookings deleted successfully');
-                fetchBookedDates(); 
+                fetchBookedDates();
             })
             .catch((error) => {
                 console.error('Error deleting old bookings:', error);

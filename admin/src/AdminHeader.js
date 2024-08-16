@@ -12,6 +12,7 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { FaTableList, FaBars } from "react-icons/fa6";
 import { FiHome, FiLogOut } from "react-icons/fi";
 import { RiGalleryFill } from "react-icons/ri";
+import { BiSolidOffer } from "react-icons/bi";
 import { toast } from 'react-toastify';
 
 export default function AdminHeader() {
@@ -44,9 +45,10 @@ export default function AdminHeader() {
                     <MenuItem className='nav-link' active={true} icon={<FiHome />} component={<Link to="/" />}>
                         Home
                     </MenuItem>
-                    <MenuItem className='nav-link' icon={<FaCloudUploadAlt />} component={<Link to="/UploadImage" />}>Upload Image</MenuItem>
+                    <MenuItem className='nav-link' icon={<BiSolidOffer />} component={<Link to="/FestivalOffer" />}>FestivalOffer</MenuItem>
                     <MenuItem className='nav-link' icon={<FaTableList />} component={<Link to="/AdminHome" />}>Booking Slot</MenuItem>
                     <MenuItem className='nav-link' icon={<RiGalleryFill />} component={<Link to="/Gallery" />}>Gallery</MenuItem>
+                    <MenuItem className='nav-link' icon={<FaCloudUploadAlt />} component={<Link to="/UploadImage" />}>Upload Image</MenuItem>
                 </Menu>
                 <div className="sidebar-footer">
                     <Menu iconShape="square">

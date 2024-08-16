@@ -34,9 +34,10 @@ export default function LoginPage() {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" className="Header_nav fixed-top">
-                <Image src={logo} width={180} style={{ borderRadius: 5 }} alt='Logo' />
+            <Navbar collapseOnSelect expand="lg" className="Header_nav fixed-top mb-5 ">
+                <Image src={logo} width={180} style={{ borderRadius: 5 }} alt='Logo' className='ms-4 nav-link' />
             </Navbar>
+
             <Container className='d-flex justify-content-center'>
                 <form className='loginpage' style={{ width: 500 }} onSubmit={formik.handleSubmit}>
                     <div className="mb-3">
