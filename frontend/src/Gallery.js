@@ -5,7 +5,6 @@ import Modal from 'react-bootstrap/Modal';
 import Layout from './Layout';
 import HomeTitle from './HomeTitle';
 import firebaseApp from './Firebase';
-import { toast } from 'react-toastify';
 
 const firestore = firebaseApp.firestore();
 
@@ -26,7 +25,7 @@ export default function Gallery() {
             })
             .catch((error) => {
                 console.error('Error fetching images:', error);
-                toast.error('Error fetching images: ' + error.message);
+                alert.error('Error fetching images: ' + error.message);
             });
     };
 
@@ -38,20 +37,25 @@ export default function Gallery() {
     return (
         <Layout>
             <HomeTitle />
-            <Container className='mb-5'>
+            <Container fluid className='mb-5'>
                 <h1 className='text-center pt-3' data-aos="zoom-in" data-aos-duration="3000" data-aos-delay="100">Gallery</h1>
                 <hr />
                 <h2 className='text-center pb-3'>My Work</h2>
-                <Row className='justify-content-center gap-4 p-3'>
+                <Row className='justify-content-center gap-3 p-2'>
                     {myWorkImg.map((row) => (
-                        <Col md={3} key={row._id} className='cardImg ' data-aos="zoom-in-up" data-aos-duration="3000">
-                            < div className=' icon' >
+                        <Col
+                            xs={4} sm={3} md={3} lg={3}
+                            key={row.id}
+                            className='cardImg'
+                            data-aos="zoom-in-up"
+                            data-aos-duration="3000"
+                        >
+                            <div className='icon'>
                                 <img
-                                    width={'100%'}
                                     src={row.imageUrl}
                                     className='img-fluid image'
                                     style={{ overflow: 'hidden' }}
-                                    alt={`Hair Style ${row._id}`}
+                                    alt={`Hair Style ${row.id}`}
                                 />
                                 <div className='middle'>
                                     <div className='text'>
@@ -65,7 +69,7 @@ export default function Gallery() {
                         </Col>
                     ))}
                 </Row>
-            </Container >
+            </Container>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Body className='cartImg'>
                     {selectedImage && (
@@ -78,6 +82,6 @@ export default function Gallery() {
                     )}
                 </Modal.Body>
             </Modal>
-        </Layout >
+        </Layout>
     );
 }

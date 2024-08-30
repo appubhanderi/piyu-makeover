@@ -6,9 +6,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { toast, ToastContainer } from 'react-toastify';
 import firebaseApp from './Firebase';
 import { FaSquareWhatsapp } from "react-icons/fa6";
+import { toast } from 'react-toastify';
 
 export default function Header() {
     const [show, setShow] = useState(false);
@@ -155,7 +155,6 @@ export default function Header() {
 
     return (
         <>
-            <ToastContainer />
             <FaSquareWhatsapp className='display-3 fixed-bottom ms-auto mb-3 me-3'
                 style={{ color: 'green', cursor: 'pointer' }} onClick={sendWhatsapp} />
             <Navbar collapseOnSelect expand="lg" className="fixed-top"
@@ -193,7 +192,9 @@ export default function Header() {
             </Navbar>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton style={{
+                    background: 'radial-gradient(circle, rgba(241, 201, 221, 1) 0%, rgba(253, 172, 212, 1) 30%, rgba(255, 105, 180, 1) 70%, rgba(255, 105, 180, 1) 100%)',
+                }}>
                     <Modal.Title>Book Appointment</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -273,12 +274,11 @@ export default function Header() {
                         </div>
                         <div className="mb-2 ">
                             <label htmlFor="bookingSlot" className="form-label">Select a Time Slot</label>
-                            <div className='text-center'>
+                            <div className='text-center '>
                                 {allowedTimes.map((time) => (
                                     <Button
-                                        className='ms-1 mb-3'
                                         key={time}
-                                        variant={time === formik.values.bookingSlot ? 'success' : 'outline-success'}
+                                        className={`ms-1 mb-3  ${time === formik.values.bookingSlot ? '' : 'bookBtn'}`}
                                         onClick={() => handleTimeChange(time)}
                                         disabled={isBooked(selectedDate, time) || isPastTimeSlot(selectedDate, time)}
                                     >
@@ -288,7 +288,6 @@ export default function Header() {
                             </div>
                         </div>
                         <button type="submit" className="btn btn-primary me-2">Book Now</button>
-                        <button type="button" className="btn btn-secondary me-2" onClick={handleClose}>Close</button>
                     </form>
                 </Modal.Body>
             </Modal>

@@ -30,9 +30,9 @@ export default function About() {
                                 borderRadius: '3%',
                                 boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
                             }}>
-                            <h1>Our Story</h1>
-                            <h5 className='fs-5 pt-3 pb-3'>TRADITIONAL BRIDAL MAKEUP: A GLIMPSE OF SURAT BEAUTY</h5>
-                            <p style={{ lineHeight: 2, color: '#333333' }}>Wedding period is the most important day in a brides life.
+                            <h1 style={{ color: '#ff69b4' }}>Our Story</h1>
+                            <h5 className='fs-5 pt-3 pb-3' style={{ color: '#ff69b4' }}>TRADITIONAL BRIDAL MAKEUP: A GLIMPSE OF SURAT BEAUTY</h5>
+                            <p style={{ lineHeight: 2 }}>Wedding period is the most important day in a brides life.
                                 All the dreams which she thoughts in her mind regarding her marriage are going to fulfil.
                                 So, on this day she has to look far beyond gorgeous just like a princess!
                                 The most important part of the wedding is the bridal makeup.</p>
@@ -45,9 +45,9 @@ export default function About() {
                                 borderRadius: '3%',
                                 boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
                             }}>
-                            <h1>Our Mission</h1>
-                            <h5 className='fs-5 pt-3 pb-3'>TRADITIONAL BRIDAL MAKEUP: A GLIMPSE OF SURAT BEAUTY</h5>
-                            <p style={{ lineHeight: 2, color: '#333333' }}>Every bride dreams of looking absolutely radiant on her wedding day,
+                            <h1 style={{ color: '#ff69b4' }}>Our Mission</h1>
+                            <h5 className='fs-5 pt-3 pb-3' style={{ color: '#ff69b4' }}>TRADITIONAL BRIDAL MAKEUP: A GLIMPSE OF SURAT BEAUTY</h5>
+                            <p style={{ lineHeight: 2 }}>Every bride dreams of looking absolutely radiant on her wedding day,
                                 and choosing the perfect hairstyle is an essential part of creating that magical look.
                                 Your bridal hairdo demands as much consideration as your bridal lehenga or makeup.
                                 From classic updos to romantic curls, braids, and intricate accessories,
@@ -79,9 +79,9 @@ export default function About() {
                                 borderRadius: '3%',
                                 boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
                             }}>
-                            <h1>Our Story</h1>
-                            <h5 className='fs-5 pt-3 pb-3'>TRADITIONAL BRIDAL MAKEUP: A GLIMPSE OF SURAT BEAUTY</h5>
-                            <p style={{ lineHeight: 2, color: '#333333' }}>Bridal makeup is no easy deal. Two things need to be on point to make sure to get a bride’s makeup perfect. Firstly,
+                            <h1 style={{ color: '#ff69b4' }}>Our Story</h1>
+                            <h5 className='fs-5 pt-3 pb-3' style={{ color: '#ff69b4' }}>TRADITIONAL BRIDAL MAKEUP: A GLIMPSE OF SURAT BEAUTY</h5>
+                            <p style={{ lineHeight: 2 }}>Bridal makeup is no easy deal. Two things need to be on point to make sure to get a bride’s makeup perfect. Firstly,
                                 the bride should be happy from inside, so that the natural glow is visible and when the makeup is applied then the face can be more vibrant and beautiful. .
                                 Secondly, the makeup itself should be done by the professional who understands what suits the bride best.</p>
                         </div>
@@ -93,9 +93,9 @@ export default function About() {
                                 borderRadius: '3%',
                                 boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
                             }}>
-                            <h1>Our Mission</h1>
-                            <h5 className='fs-5 pt-3 pb-3'>TRADITIONAL BRIDAL MAKEUP: A GLIMPSE OF SURAT BEAUTY</h5>
-                            <p style={{ lineHeight: 2, color: '#333333' }}>We understand that every bride is unique, and that's why we're committed to providing a diverse range of
+                            <h1 style={{ color: '#ff69b4' }}>Our Mission</h1>
+                            <h5 className='fs-5 pt-3 pb-3' style={{ color: '#ff69b4' }}>TRADITIONAL BRIDAL MAKEUP: A GLIMPSE OF SURAT BEAUTY</h5>
+                            <p style={{ lineHeight: 2 }}>We understand that every bride is unique, and that's why we're committed to providing a diverse range of
                                 hairstyle ideas that cater to different hair types, lengths, and personal preferences. Whether you have long,
                                 flowing locks, a chic bob, or an elegant pixie cut, we have suggestions that will help you enhance your natural beauty and express your individuality.
                                 So, to make your search easier, we have divided this blog into 3 sections, i.e. South Indian Bridal Hairstyles,

@@ -32,28 +32,30 @@ export default function Services() {
         <Layout>
             <HomeTitle />
             <h1 className='text-center pt-3' data-aos="zoom-in" data-aos-duration="3000" data-aos-delay="100">Services</h1><hr />
-            <Container className='HomeService mb-4 mt-4'
-                style={{
+            <Container className='HomeService pb-3 pe-4 ps-4'>
+                <Row className='services ' style={{
+                    overflowX: 'hidden',
+                    overflowY: 'hidden',
                     boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
                     background: 'radial-gradient(circle, rgba(241, 201, 221, 1) 0%, rgba(253, 172, 212, 1) 30%, rgba(255, 105, 180, 1) 70%, rgba(255, 105, 180, 1) 100%)',
                     borderRadius: '8px',
                 }}>
-                <Row style={{ overflowX: 'hidden', overflowY: 'hidden' }}>
-                    <h4 className='display-3 fw-bold text-center p-2'>Welcome To Piyu Makeover</h4>
-                    <h1 className='pb-3 text-center'>At Home In Surat</h1>
+                    <h4 className='display-3 fw-bold text-center mt-2'>Welcome To Piyu Makeover</h4>
+                    <h1 className='mb-2 text-center'>At Home In Surat</h1>
                     <hr />
                     {services.map((service, index) => (
-                        <Col key={index} md={3} sm={4} className="pb-3 mb-lg-0 text-center" >
-                            <div className=" mb-2">
-                                <Link className=' nav-link active pe-3' to={service.link}>
-                                    <img src={service.img} style={{ borderRadius: '100%', width: '130px', height: '130px' }} alt='' />
-                                    <h4 className="fs-3 fw-semibold" >{service.name}</h4>
+                        <Col key={index} xs={6} sm={4} md={4} lg={3} className="text-center m-auto services1">
+                            <div className="mb-3">
+                                <Link className='nav-link active' to={service.link}>
+                                    <img src={service.img} style={{ borderRadius: '100%', width: '130px', height: '130px', objectFit: 'cover', }} alt='' />
+                                    <h4 className="fs-3 fw-semibold mt-2">{service.name}</h4>
                                 </Link>
                             </div>
                         </Col>
                     ))}
                 </Row>
             </Container>
+
         </Layout>
     );
 }

@@ -31,7 +31,7 @@ export default function Cards({ service }) {
                             background: 'radial-gradient(circle, rgba(241, 201, 221, 1) 0%, rgba(253, 172, 212, 1) 30%, rgba(255, 105, 180, 1) 70%, rgba(255, 105, 180, 1) 100%)',
                         }}>
                         <div className="d-flex gap-3">
-                            <img style={{ borderRadius: '10%', width: '100px', height: '100px' }} src={item.img} alt={item.serviceName} />
+                            <img style={{ borderRadius: '10%', width: '100px', height: '100px', objectFit: 'cover' }} src={item.img} alt={item.serviceName} />
                             <div className="">
                                 <h5>{item.serviceName}</h5>
                                 <p>
@@ -45,7 +45,7 @@ export default function Cards({ service }) {
                         <div>
                             <ul>
                                 {item.listItem.map((list, idx) => (
-                                    <li  key={idx} style={{ fontFamily: "Merienda, cursive" }}>{list}</li>
+                                    <li key={idx} style={{ fontFamily: "Merienda, cursive" }}>{list}</li>
                                 ))}
                             </ul>
                         </div>

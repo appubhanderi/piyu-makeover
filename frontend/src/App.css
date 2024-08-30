@@ -37,6 +37,17 @@ img.img-fluid {
     overflow: hidden;
 }
 
+.bookBtn {
+    background: radial-gradient(circle, rgba(241, 201, 221, 1) 0%, rgba(253, 172, 212, 1) 30%, rgba(255, 105, 180, 1) 70%, rgba(255, 105, 180, 1) 100%) !important;
+    color: #021B79 !important;
+}
+
+.bookBtn:hover {
+    background-image: linear-gradient(to right, #0575E6 0%, #021B79 51%, #0575E6 100%) !important;
+    transition: 0.5s !important;
+    color: #fff !important;
+}
+
 /* Optional: Animation keyframes for additional effects */
 
 @keyframes pulse {
@@ -73,6 +84,8 @@ img.img-fluid {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+
 
 /* marquee taxt rainbow----------- */
 
@@ -136,20 +149,13 @@ img.img-fluid {
 
 @keyframes glow {
     from {
-        text-shadow: 0px 0px 5px #fff, 0px 0px 5px #614ad3;
+        text-shadow: 0px 0px 5px #fff, 0px 0px 5px #ff69b4;
     }
 
     to {
-        text-shadow: 0px 0px 20px #fff, 0px 0px 20px #614ad3;
+        text-shadow: 0px 0px 20px #fff, 0px 0px 20px #ff69b4;
     }
 }
-
-
-
-
-
-
-
 
 
 /* homeCarousel------------------ */
@@ -236,11 +242,6 @@ img.img-fluid {
     animation: pulse 0.8s ease infinite;
     overflow: hidden;
 }
-
-
-
-
-
 
 
 

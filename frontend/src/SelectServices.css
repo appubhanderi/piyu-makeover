@@ -27,3 +27,10 @@
 .service-card:hover {
     animation: pulse 0.8s ease infinite;
 }
+
+
+@media screen and (max-width: 360px) {
+    .services1 {
+        width: 100% !important;
+    }
+}

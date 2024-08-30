@@ -36,7 +36,7 @@ export default function Testimonials() {
                                 <div className='text-center homeCarousel'>
                                     <img src={Img1} className='m-auto' alt="" />
                                     <p className='text-body-tertiary p-md-5'>
-                                        A happy client. Your go to salon and  its no exaggeration! The beautician came from home salon was very gentle,
+                                        A happy client. Your go to salon and  its no exaggeration! The beautician came from <b>Piyu Makeover</b> was very gentle,
                                         patient and gave required time for each of the services. After the session i felt fully recharged and pampered.
                                         The products they use are of good quality and the beautician is well experienced.
                                         The best part was beautician was not in hurry and did everything perfectly. Will highly recommend it!
@@ -48,7 +48,7 @@ export default function Testimonials() {
                                 </div>
                                 <div className='text-center homeCarousel'>
                                     <img src={Img2} className='m-auto' alt="" />
-                                    <p className='text-body-tertiary p-md-5'>My experience  was super, considering  this as my first booking with HOME SALON.
+                                    <p className='text-body-tertiary p-md-5'>My experience  was super, considering  this as my first booking with <b>Piyu Makeover</b>.
                                         I liked it so much, that I would definitely  book my services  with the same salon. Also they are so cost effective,
                                         and have such good packages. Also they made some changes in the services. as listed in there existing package,
                                         which shows how flexible they are..</p>
@@ -59,7 +59,7 @@ export default function Testimonials() {
                                 </div>
                                 <div className='text-center homeCarousel'>
                                     <img src={Img3} className='m-auto' alt="" />
-                                    <p className='text-body-tertiary p-md-5'>I received a tension free good service from HOME SALON. Booking was through WhatsApp
+                                    <p className='text-body-tertiary p-md-5'>I received a tension free good service from <b>Piyu Makeover</b>. Booking was through WhatsApp
                                         and the staff were courteous. Overall seamless experience at the comfort of my home.
                                         I will definitely recommend their service for others too.</p>
                                     <div className='d-flex  justify-content-center gap-3 '>

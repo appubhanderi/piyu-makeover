@@ -35,13 +35,13 @@ export default function HomeTitle() {
                 </Row>
             </Container>
             <Container fluid>
-                <Row className='justify-content-center'>
+                <Row className='justify-content-center '>
                     {festivalOffer.length > 0 ? (
                         festivalOffer.map((offer, index) => (
-                            <Col key={offer.id} md={12} className='offer pb-3 text-center'>
+                            <Col key={offer.id} md={12} className='offer  text-center'>
                                 <marquee
                                     direction={index % 2 === 0 ? "right" : "left"}
-                                    className='offer-text fs-1'
+                                    className='offer-text fs-1 pt-2 pb-2'
                                 >
                                     {offer.festivalOption}  Offer: {offer.festival}
                                 </marquee>

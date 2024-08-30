@@ -1,9 +1,13 @@
-import React from 'react'
-import Layout from './Layout'
-import { Button, Col, Container, Form, Row } from 'react-bootstrap'
+import React from 'react';
+import Layout from './Layout';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import HomeTitle from './HomeTitle';
+import firebaseApp from './Firebase';
+import { toast } from 'react-toastify';
+
+const firestore = firebaseApp.firestore();
 
 const MapStyle = {
     width: "100%",
@@ -26,69 +30,99 @@ export default function Contact() {
             message: '',
         },
         validationSchema,
-        onSubmit: (values) => {
-            // Handle form submission logic here
-            console.log('Form submitted with values:', values);
+        onSubmit: (values, { resetForm }) => {
+            firestore.collection("Messages").add({
+                name: values.name,
+                email: values.email,
+                contact: values.contact,
+                message: values.message,
+            })
+                .then(() => {
+                    console.log('Form submitted successfully with values:', values);
+                    resetForm();
+                    toast('Your message has been sent successfully!');
+                })
+                .catch((error) => {
+                    console.error('Error submitting form:', error);
+                    toast('There was an error submitting your message. Please try again later.');
+                });
         },
     });
+
     return (
         <Layout>
             <HomeTitle />
-            <h1 className='text-center pt-3' data-aos="zoom-in" data-aos-duration="3000" data-aos-delay="100">Contect Us</h1><hr />
-            <Container className=' pt-3 pb-3'>
+            <h1 className='text-center pt-3' data-aos="zoom-in" data-aos-duration="3000" data-aos-delay="100">Contact Us</h1><hr />
+            <Container className='pt-3 pb-3'>
                 <Row className='mb-3 p-2'>
                     <Col md={2}></Col>
                     <Col md={8} style={{ borderRadius: '2%', backgroundColor: '#ff9fcf' }}>
                         <h1 className='text-center pb-3'>Send Us A Message</h1>
-                        <Form onSubmit={formik.handleSubmit}>
-                            <Form.Group className="mb-3" controlId="formGroupName">
-                                <Form.Control
+                        <form className='m-auto' onSubmit={formik.handleSubmit}>
+                            <div className="mb-2">
+                                <label htmlFor="name" className="form-label">Name</label>
+                                <input
+                                    id="name"
+                                    name="name"
                                     type="text"
-                                    placeholder="Name"
-                                    {...formik.getFieldProps('name')}
+                                    className={`form-control ${formik.touched.name && formik.errors.name ? 'is-invalid' : ''}`}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.name}
                                 />
-                                {formik.touched.name && formik.errors.name && (
-                                    <div className="text-danger">{formik.errors.name}</div>
-                                )}
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formGroupEmail">
-                                <Form.Control
-                                    type="email"
-                                    placeholder="Email"
-                                    {...formik.getFieldProps('email')}
-                                />
-                                {formik.touched.email && formik.errors.email && (
-                                    <div className="text-danger">{formik.errors.email}</div>
-                                )}
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formGroupContact">
-                                <Form.Control
-                                    type="tel"
-                                    placeholder="Contact"
-                                    {...formik.getFieldProps('contact')}
-                                />
-                                {formik.touched.contact && formik.errors.contact && (
-                                    <div className="text-danger">{formik.errors.contact}</div>
-                                )}
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formGroupDescription">
-                                <Form.Control
-                                    style={{ height: 110 }}
-                                    as="textarea"
-                                    placeholder="Message"
-                                    aria-label="With textarea"
-                                    {...formik.getFieldProps('message')}
-                                />
-                                {formik.touched.message && formik.errors.message && (
-                                    <div className="text-danger">{formik.errors.message}</div>
-                                )}
-                            </Form.Group>
-                            <div className='text-center mb-3'>
-                                <Button className='ps-4 pe-4 ' type="submit" disabled={formik.isSubmitting}>
-                                    Submit
-                                </Button>
+                                {formik.touched.name && formik.errors.name ? (
+                                    <div className="invalid-feedback">{formik.errors.name}</div>
+                                ) : null}
                             </div>
-                        </Form>
+                            <div className="mb-2">
+                                <label htmlFor="email" className="form-label">Email</label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    className={`form-control ${formik.touched.email && formik.errors.email ? 'is-invalid' : ''}`}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.email}
+                                />
+                                {formik.touched.email && formik.errors.email ? (
+                                    <div className="invalid-feedback">{formik.errors.email}</div>
+                                ) : null}
+                            </div>
+                            <div className="mb-2">
+                                <label htmlFor="contact" className="form-label">Contact Number</label>
+                                <input
+                                    id="contact"
+                                    name="contact"
+                                    type="tel"
+                                    className={`form-control ${formik.touched.contact && formik.errors.contact ? 'is-invalid' : ''}`}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.contact}
+                                />
+                                {formik.touched.contact && formik.errors.contact ? (
+                                    <div className="invalid-feedback">{formik.errors.contact}</div>
+                                ) : null}
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="message" className="form-label">Message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    className={`form-control ${formik.touched.message && formik.errors.message ? 'is-invalid' : ''}`}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.message}
+                                    rows={4}
+                                />
+                                {formik.touched.message && formik.errors.message ? (
+                                    <div className="invalid-feedback">{formik.errors.message}</div>
+                                ) : null}
+                            </div>
+                            <div className='text-center mb-2'>
+                                <button type="submit" className="btn btn-primary">Book Now</button>
+                            </div>
+                        </form>
                     </Col>
                     <Col md={2}></Col>
                 </Row>
@@ -102,11 +136,11 @@ export default function Contact() {
                             allowFullScreen=""
                             aria-hidden="false"
                             tabIndex="0"
-                            title="Humanity First Indonesia"
+                            title="Map"
                         />
                     </Col>
                 </Row>
             </Container>
         </Layout>
-    )
+    );
 }
